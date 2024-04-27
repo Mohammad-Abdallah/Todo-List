@@ -1,0 +1,462 @@
+/* Start Global Rules */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Sans-serif;
+}
+
+:root{
+    --main-color:#16a3b7;
+    --second-color: #db3341;
+    --border-color:#f3f3f3;
+    --border-rad-5px: 5px;
+}
+
+/* End Global Rules */
+
+
+.container {
+    margin: 50px 300px;
+    max-height: 80vh;
+
+    /*Start Todo Input*/
+    .ToDoInput{
+        h1{
+            text-align: center;
+        }
+
+        .ToDoInputForm{
+            border:2px solid var(--border-color);
+            border-radius: var(--border-rad-5px);
+            padding: 20px;
+
+            .textField{
+                position:relative;
+                margin-bottom: 20px;
+
+                input{
+                    width: 100%;
+                    padding: 10px 60px ;
+                    border-radius: var(--border-rad-5px);
+                    border: 2px solid var(--border-color);
+                    
+                }
+
+                .icon{
+                    position: absolute;
+                    top:0;
+                    left: 0;
+                    height: 100%;
+                    width: 50px;
+                    border-radius: var(--border-rad-5px);
+                    background-color: var(--main-color);
+    
+                    i{
+                        position: absolute;
+                        top:50%;
+                        left: 50%;
+                        transform: translate(-50% , -50%);
+                        font-size: 1.2em;
+                        color:white;
+                    }
+                }
+            }
+                
+            button{
+                width: 100%;
+                padding: 10px;
+                color:white;
+                background-color: var(--main-color);
+                border-radius: var(--border-rad-5px);
+                border: none;
+                cursor: pointer;
+            }
+        }
+    }
+    /*End Todo Input*/
+
+    /*Start Todo List*/
+    .ToDoList{
+        h1{
+            text-align: center;
+        }
+        
+        .Buttons{
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 50px;
+            button{
+                background-color: var(--main-color);
+                width:100%;
+                padding: 10px 0;
+                color: white;
+                border-radius: var(--border-rad-5px);
+                border: 2px solid var(--main-color);
+                cursor: pointer;
+            }        
+        }
+
+        .taskContainer {
+            height: 300px;
+            overflow-y: scroll;
+            padding: 20px;
+            
+            .TasksList{
+                display:flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 20px;
+                margin-bottom: 20px;
+                border:2px solid var(--border-color);
+                border-radius: var(--border-rad-5px);
+    
+                .Icons{ 
+                    display: flex;
+                    column-gap: 5px;
+                    position: relative;
+
+                    input[type = "checkbox"] {
+                        position: absolute;
+                        left: -30px;
+                        top: 1px;
+                        appearance: none;
+                        -webkit-appearance: none;
+                        height: 20px;
+                        width: 20px;
+                        background-color: #d5d5d5;
+                        border-radius: var(--border-rad-5px);
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    input[type = "checkbox"]::after {
+                        font-family: "Font Awesome 5 Free";
+                        content: "\f00c";
+                        font-weight: bold;
+                        font-size: 15px;
+                        color: #5bcd3e;
+                        display: none;
+                    }
+                    input[type = "checkbox"]:hover {
+                        background-color: #a5a5a5;
+                    }
+                    input[type = "checkbox"]:checked {
+                        background-color: white;
+                        border: 1px solid #5bcd3e;
+                    }
+                    input[type = "checkbox"]:checked:after {
+                        display: block;
+                    }
+
+                    button{
+                        background-color:white;
+                        border: none;
+                        font-size: 1.2em;
+                    }
+                    .edit{
+                        color:#fcc108;
+                        cursor: pointer; 
+                    }
+                    .delete{
+                        color:var(--second-color);
+                        cursor: pointer;
+                    }
+                }
+                
+            }
+        }
+        .taskContainer::-webkit-scrollbar {
+            width: 8px;
+          }
+          .taskContainer::-webkit-scrollbar-track {
+            background-color: #dee5f1;
+          }
+          .taskContainer::-webkit-scrollbar-thumb {
+            background-color: var(--main-color);
+            border-radius: 10px;
+          }
+
+        
+        .DeleteForm{
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 50px;
+            button{
+                background-color: var(--second-color) ;
+                color: white;
+                width:100%;
+                border-radius: var(--border-rad-5px);
+                padding: 10px 0;
+                border: none;
+                cursor: pointer;
+            }
+        }
+        .done-task {
+            color:var(--second-color); 
+            text-decoration: line-through; 
+        }
+    }
+
+
+/*End Todo List*/
+
+/*Start warning Popup*/
+.warningPopup{
+    width:400px;
+        background-color: var(--second-color);
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%) ;
+        border-radius: 20px;
+        text-align: center;
+        padding: 20px;
+        visibility: hidden;
+        
+        .icon{
+            background-color: var(--second-color);
+            border-radius: 50%;
+            width:100px;
+            position:absolute;
+            top:-2%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            box-shadow: 0 2px 5px #555050 ;
+            i{
+                padding: 15px 15px;
+                color:white;
+                font-size: 2em;
+            }
+        }
+        p{
+            font-weight: bold;
+            font-family: sans-serif;
+            margin: 25px 0;
+            color: white;
+        }
+        .close{
+            background-color: black;
+            padding: 10px 30px ;
+            border:none;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px #555050 ;
+            color: white;
+            cursor: pointer;
+        }
+}
+
+
+/*End warning Popup*/
+.openWarningPopup{
+    visibility: visible;
+}
+/*Start edit Popup*/
+    .editPopup{
+        width:400px;
+        background-color: var(--main-color);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%) ;
+        border-radius: 10px;
+        text-align: center;
+        padding: 20px 20px;
+        visibility: hidden;
+        
+        .icon{
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--main-color);
+            padding: 20px;
+            border-radius: 50%;
+            border: 2px solid black;
+            i{  
+                font-size: 1.5em;
+                color:#fcc108
+            }
+        }
+
+        p{
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 30px;
+            color: white;
+        }
+        input{
+            display: block;
+            border-radius: var(--border-rad-5px);
+            padding: 10px 5px;
+            margin-bottom: 20px;
+            width: 100%;
+            outline: white;
+            border-color: white;
+        }
+        .buttons{
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+
+            .edit{
+                background-color: #007bff;
+                padding: 10px 30px ;
+                border:none;
+                border-radius: var(--border-rad-5px);
+                cursor: pointer;
+                color: white;
+            }
+            .cancel{
+                background-color: #dc3545;
+                padding: 10px 20px ;
+                border:none;
+                border-radius: var(--border-rad-5px);
+                cursor: pointer;
+                color: white;
+            }
+        }
+    }
+    .openEditPopup{
+        visibility: visible;
+    }
+    /* .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    } */
+/*End edit Popup*/
+
+/*Start delete Popup*/
+    .deletePopup{
+        width:400px;
+        background-color: red;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 10px;
+        text-align: center;
+        padding: 20px 20px;
+        visibility: hidden;
+        
+        .trash{
+            background-color: red;
+            border-radius: 50%;
+            width:100px;
+            position:absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid white;
+            i{
+                padding: 15px 15px;
+                font-size: 2em;
+                color: white;
+            }
+        }
+        h2{
+            font-family: sans-serif;
+            margin: 30px 0 ;
+            color: white;
+        }
+        p{
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+        .buttons{
+            display:flex;
+            justify-content: center;
+            gap:10px;
+            .yes{
+                background-color: black;
+                padding: 10px 30px ;
+                border:none;
+                border-radius: 20px;
+                color: white;
+                cursor: pointer;
+                border: none;
+            }
+            .no{
+                background-color: black;
+                padding: 10px 30px;
+                border-radius: 20px;
+                color: white;
+                cursor: pointer;
+                border: none;
+            }
+        }
+    }
+/*End delete Popup*/
+
+/*Start yes Popup*/
+    .yesPopup{
+        width: 400px;
+        background-color: red;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%) ;
+        border-radius: 10px;
+        text-align: center;
+        padding: 20px;
+        visibility:hidden;
+        .checkIcon{
+            background-color: red;
+            border-radius: 50%;
+            width:100px;
+            position:absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid white;
+            i{
+                padding: 15px 15px;
+                font-size: 2em;
+                color: white;
+            }
+        }
+        p{
+            font-weight: bold;
+            margin-top: 45px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        .close{
+            background-color: black;
+            padding: 10px 30px ;
+            border:none;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px #555050 ;
+            cursor: pointer;
+            color: white;
+        }
+    }
+    .openPopup{
+        top:50%;
+        transform: translate(-50%,-50%);
+        visibility: visible;
+    }
+}
+/*End yes Popup*/
+
+/*Start media*/
+@media (max-width:992px) {
+    .container {
+        margin: 100px 20px 0;
+    }
+}
+/*End media*/
